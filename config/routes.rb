@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :vacations
+  resources :legs
   post 'vacations' => "vacations#create"
 
   # The priority is based upon order of creation: first created -> highest priority.
