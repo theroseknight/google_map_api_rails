@@ -32,17 +32,17 @@ module GoogleMapsApi
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.middleware.insert_before 0, "Rack::Cors", :debug => true, :logger => (-> { Rails.logger }) do
       allow do
-        origins 'http://localhost:4200', 'http://192.168.1.102:4200'
+        origins 'http://localhost:4200', 'http://192.168.1.102:4200', 'https://maps.googleapis.com'
         resource '*',
         :headers => :any,
         :methods => [:get, :post, :delete, :put, :options, :head],
         :max_age => 0,
-        :credentials => true
+        :credentials => false
       end
     end
 
     config.autoload_paths << Rails.root.join('lib')
-    config.autoload_paths << Rails.root.join('lib/tasks')    
+    config.autoload_paths << Rails.root.join('lib/tasks')
     config.active_record.raise_in_transactional_callbacks = true
   end
 end

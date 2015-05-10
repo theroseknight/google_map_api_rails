@@ -4,11 +4,13 @@ class LegsController < ApplicationController
     new_leg = Leg.create(
       vacation_id:params[:leg][:vacation_id],
       starting_city:params[:leg][:starting_city],
+      starting_state:params[:leg][:starting_state],
       ending_city:params[:leg][:ending_city],
-      starting_coordinate_one:params[:leg][:starting_coordinate_one],
-      starting_coordinate_two:params[:leg][:starting_coordinate_two],
-      ending_coordinate_one:params[:leg][:ending_coordinate_one],
-      ending_coordinate_two:params[:leg][:ending_coordinate_two]
+      ending_state:params[:leg][:ending_state],
+      starting_lat:params[:leg][:starting_lat],
+      starting_lng:params[:leg][:starting_lng],
+      ending_lat:params[:leg][:ending_lat],
+      ending_lng:params[:leg][:ending_lng]
     )
     render json:{leg:new_leg}
   end
