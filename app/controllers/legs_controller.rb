@@ -1,6 +1,7 @@
 class LegsController < ApplicationController
   #Create
   def create
+    puts params
     new_leg = Leg.create(
       vacation_id:params[:leg][:vacation_id],
       starting_city:params[:leg][:starting_city],
@@ -12,13 +13,14 @@ class LegsController < ApplicationController
       ending_lat:params[:leg][:ending_lat],
       ending_lng:params[:leg][:ending_lng]
     )
+    puts new_leg.inspect
     render json:{leg:new_leg}
   end
 
   #Read - All
   def index
+    puts params
     legs = Leg.where(vacation_id:params[:vacation_id])
-    legs.map!{|leg|leg.attributes}
     render json:{legs:legs}
   end
 

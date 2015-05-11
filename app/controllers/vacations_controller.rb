@@ -18,6 +18,9 @@ class VacationsController < ApplicationController
   #Read - One
   def show
     vacation = Vacation.find(params[:id])
+    puts vacation.inspect
+    vacation = vacation.attributes
+    puts vacation.inspect
     render json:{vacation:vacation}
   end
 end
